@@ -7,7 +7,7 @@ import java.util.List;
 public class BaseDeDatos {
     List <String> lista;
     //Cargar el archivo txt
-    private final String archivo = "C:/Users/admin/IdeaProjects/TP2-RECCHIA/src/main/java/bd/frases.txt";
+    private final String archivo = "src/main/java/bd/frases.txt";
 
     //Constructor de la clase
     public BaseDeDatos() {
@@ -45,7 +45,7 @@ public class BaseDeDatos {
     public void editarFrase(int indice, String nuevaFrase) {
         if (indice >= 0 && indice < lista.size()) {
             lista.set(indice, nuevaFrase); // Modificamos la frase en la lista
-            guardarEnArchivo(nuevaFrase); // Guardar la lista completa en el archivo
+            guardarListaCompleta(); // Guardar la lista completa en el archivo
             System.out.println("Frase editada con éxito.");
         } else {
             System.out.println("Índice no válido.");
@@ -73,6 +73,19 @@ public class BaseDeDatos {
             System.out.println("No se encontró el archivo, se creará uno nuevo al guardar.");
         } catch (IOException e) {
             System.out.println("Error al cargar las frases: " + e.getMessage());
+        }
+    }
+
+
+    //Metodo para guardar toda la lista en el archivo (sobrescribiendo)
+    private void guardarListaCompleta() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
+            for (String frase : lista) {
+                writer.write(frase);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al guardar la lista completa: " + e.getMessage());
         }
     }
 }

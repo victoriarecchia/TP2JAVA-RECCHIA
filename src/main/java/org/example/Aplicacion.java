@@ -55,7 +55,7 @@ public class Aplicacion {
         System.out.println(cantidadConsonantes);
 
 
-        /*
+
         //Seleccionar y editar frase
         System.out.println("Ingrese el índice de la frase que desea editar: ");
         int indice = scanner.nextInt();
@@ -68,6 +68,6 @@ public class Aplicacion {
 
         //Mostrar lista actualizada
         System.out.println("Lista actualizada: " + bd.getListaComoString());
-*/
+
     }
 }
