@@ -21,7 +21,7 @@ public class BaseDeDatos {
         guardarEnArchivo(texto);
     }
 
-    //Metodo para establecer la lista de frases
+    //Metodo para setear la lista de frases
     public void setLista(List <String> lista) {
         this.lista = lista;
     }
@@ -61,6 +61,17 @@ public class BaseDeDatos {
             System.out.println("Error al guardar la frase: " + e.getMessage());
         }
     }
+    //Metodo para guardar toda la lista en el archivo (sobrescribiendo)
+    private void guardarListaCompleta() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
+            for (String frase : lista) {
+                writer.write(frase);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al guardar la lista completa: " + e.getMessage());
+        }
+    }
 
     //Metodo para cargar las frases desde el archivo al iniciar el programa
     private void cargarDesdeArchivo() {
@@ -77,15 +88,4 @@ public class BaseDeDatos {
     }
 
 
-    //Metodo para guardar toda la lista en el archivo (sobrescribiendo)
-    private void guardarListaCompleta() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, false))) {
-            for (String frase : lista) {
-                writer.write(frase);
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Error al guardar la lista completa: " + e.getMessage());
-        }
-    }
 }

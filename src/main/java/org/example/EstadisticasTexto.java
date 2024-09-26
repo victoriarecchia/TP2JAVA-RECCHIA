@@ -6,8 +6,6 @@ public class EstadisticasTexto {
         //Validar que no cuente los espacios en blanco como palabras
         String[] palabras = texto.trim().split("\\s+");
         return "Cantidad de palabras del texto: " + palabras.length;
-
-
     }
 
     public String contadorVocales(String texto) {
